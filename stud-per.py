@@ -1,6 +1,7 @@
 import pickle
 import pandas as pd
 import streamlit as st
+from sklearn.preprocessing import StandardScaler,LabelEncoder
 
 def load_model():
     with open('linear_stundent.pkl', 'rb') as file:
@@ -9,6 +10,7 @@ def load_model():
 
 
 def pre_process_model(data, scalar, le):
+
     data['Extracurricular Activities']= le.transform([data['Extracurricular Activities']])[0]
     df = pd.DataFrame([data])
     transformed_df = scalar.transform(df)
